@@ -18,9 +18,16 @@ class GameOfLife(metaclass=SingletonMeta):
     def __init__(self, width=20, height=20):
         self.__width = width
         self.__height = height
+        self.__count_generates = 0
         self.world = self.generate_universe()
+        self.old_world = self.world
+
+    @property
+    def count(self):
+        return self.__count_generates
 
     def form_new_generation(self):
+        self.__count_generates += 1
         universe = self.world
         new_world = [[0 for _ in range(self.__width)] for _ in range(self.__height)]
 
@@ -38,6 +45,7 @@ class GameOfLife(metaclass=SingletonMeta):
                     new_world[i][j] = 1
                     continue
                 new_world[i][j] = 0
+        self.old_world = self.world
         self.world = new_world
 
     def generate_universe(self):

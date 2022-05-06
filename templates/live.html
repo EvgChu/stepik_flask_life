@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block app_content %}
     <a class="btn btn-warning home" href="{{ url_for('index') }}"> На главную </a>
+    <div class="counter"> {{live.count}}</div>
     <a class="btn btn-info refresh" href=""> Создать новую жизнь </a>
 
       <table class="world">
-        {% for i in range(3) %}
+        {% for line in live.world %}
         <tr>
-            {% for i in range(3) %}
-                {% if  True %}
+            {% for cell in line %}
+                {% if cell == 1 %}
                     <td class="cell living-cell"></td>
                 {% else %}   
                     <td class="cell"></td>
