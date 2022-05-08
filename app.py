@@ -13,8 +13,10 @@ def index():
 @app.route("/live")
 def live():
     live = game_of_life.GameOfLife()
+    
+    res = flask.render_template("live.html", live=live)
     live.form_new_generation()
-    return flask.render_template("live.html", live=live)
+    return res
 
 if __name__ == "__main__":
     app.run( host="127.0.0.1", port=8888 )
