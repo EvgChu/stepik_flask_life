@@ -2,7 +2,7 @@
 {% block app_content %}
     <a class="btn btn-warning home" href="{{ url_for('index') }}"> На главную </a>
     <div class="counter"> {{live.count}}</div>
-    <a class="btn btn-info refresh" href=""> Создать новую жизнь </a>
+    <a class="btn btn-info refresh" href=""> Обновить </a>
 
       <table class="world">
         {% for i in range(live.world|length) %}
